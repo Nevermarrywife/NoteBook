@@ -1,0 +1,3 @@
+选择table的特定行用 rows[i] 方法  i从0开始算；
+选择table的特定列用 cells[i] 方法  i从0开始算；
+提取里面的内容用innerHTML属性。
