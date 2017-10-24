@@ -1,0 +1,6 @@
+window.onload = haha;		//不加括号代表函数这个对象
+function haha(){
+....
+}
+haha();				//加了括号表示函数的返回值
+
