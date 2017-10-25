@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//执行上下文
+		// 在<scritp>或者一个函数中，第一步就是先把里面所有的变量定义和函数声明取出放在在前面。在函数里的执行上下文里会把变量定义和函数声明以及确定this、arguement的值。
+
+		/*
+		console.log(a);	//undefined
+		var a = 100;
+		console.log(a);
+
+		实际上该式子可以理解为：
+		var a = undefined;	//把变量定义放在最前。
+		console.log(a);
+		a = 100;
+		*/
+
+		/*
+		fn('zhangsan');			//zhangsan 20
+		function fn(name){
+			age = 20;
+			console.log(name,age);
+			var age;
+			//函数声明
+		}
+
+		实际该式子可理解为：
+		function fn(name){
+			var age;
+			age = 20;
+			console.log(name,age);
+		}
+		fn('zhangsan');	
+		*/
+
+		/*
+		var fn = function(){
+			// 函数表达式  注意与函数声明的区别
+		}
+		*/
+
+
+		/*
+		// var fn = function(){}   
+		//fn    函数还处于定义状态
+		//fn（） 函数执行
+		*/
+
+
+		// this  this要在执行时才能确认值，定义时无法确认
+		/*
+		function Foo(name){
+			this.name = name;	//作为构造函数执行，this指向变量fn。
+		}
+		var fn = new Foo('zhansan');
+		console.log(this.name)  //zhangsna
+
+
+		var obj = {
+			name:'A',
+			printfName:function(){
+				console.log(this.name) //作为对象属性执行，this指向obj对象。
+			}
+		}
+		obj.printfName()
+
+
+		function fn(){
+			console.log(this);  //作为普通函数执行，this指向window
+		}
+		fn();
+
+		function fn1(name){
+			alert(name)		//zhangsan
+			console.log(this); //{x:100}  使用call方法执行，this就指向call的第一个参数对象。。
+		}
+		fn1.call({x:100},'zhangsan')；
+
+
+		var fn2 = function(name){
+			alert(name);//zhangsan
+			console.log(this);//{y:2}  使用bind方法执行，this指向bind第一个参数对象。
+		}.bind({y:2},'zhangsan');
+		fn2();
+		*/
+
+
+		//作用域
+		/*
+		if(true){
+			var a = 100;//花括号里面就是一个块，但js里没有块级作用域。
+		}
+		console.log(a) //100
+
+		var a = 100;
+		function fn(){
+			var b = 200;
+			function fn2(){
+				var c = 300;
+				console.log(a);//在这个作用域中没有a变量，所以a是一个自由变量。向上在父级作用域(定义该函数的作用域)里找，找不到再往上找。一个自由变量链式的往上查找，就形成了作用域链。
+				console.log(b);
+				console.log(c);
+			}
+			fn2();
+		}
+		fn();
+		*/
+
+
+		// 闭包的应用
+		/*
+		function fn(){
+			var a = 100;
+			return function(){	//1、函数作为返回值
+				console.log(a);
+			}
+		}
+
+		var a = 200;
+		var f = fn();	//a的父级作用域是fn(){}
+		f();
+
+
+		function F1(){
+			var a = 100;
+			return function(){
+				console.log(a);
+			}
+		}
+
+		var f1 = F1();
+
+		function F2(fn){
+			var a = 300;
+			fn();
+		}
+
+		F2(f1);		//2、函数作为参数来传递
+		*/
+
+
+
+		//问题：对变量提升的理解
+		// 考点：执行上下文  注意函数表达式和函数声明的区别。
+
+		//问题：说明this的几种不同的使用场景。
+		//四个场景
+
+		//问题：创建4个<a>标签点击并弹出对应数字。
+		/*
+		//错误写法   当点click时，自由变量i已经是10了。
+		var i,a;
+		for(i = 0;i<10;i++){
+				var a = document.createElement('a');
+				a.innerHTML = i ;
+				a.addEventListener('click',function(e){
+					e.preventDefault();
+					alert(i);
+				})
+				document.body.appendChild(a)
+
+		}
+		//正确写法
+		var i ;
+		for(i=0;i<10;i++){
+			(function(i){		//自执行函数，不用调用，只要定义完成，立即调用。
+				var a = document.createElement('a');
+				a.innerHTML= i;
+				a.addEventListener('click',function(){
+					alert(i);  //i自由变量是确定的。
+				})
+				document.body.appendChild(a)
+			})(i)
+		}
+		*/
+
+
+		//问题：如何理解作用域
+		//三点必答：1、自由变量 2、作用域链（自由变量的查找) 3、闭包的两个场景
+
+
+		 //问题：实际开发中闭包的应用
+		 //闭包实际应用中主要用于封装变量，收敛权限
+		 /*
+		 function fn(){
+		 	var arr = [];
+		 	return function(m){
+		 		if(arr.indexOf(m)!=-1){
+		 			console.log(false)
+		 		}else{
+		 			arr.push(m);
+		 			console.log(true)
+		 		}
+		 	}
+		 }
+		 var fm = fn();
+		 fm(10);//true
+		 fm(10);//false
+		 fm(20);//true
+		 */
+	</script>
+</body>
+</html>
