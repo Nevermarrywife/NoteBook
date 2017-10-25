@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="div1">
+		<h3>习近平领导的十九大完美结束</h3>
+		<p>其中习总书记总结并讲述了中国近三年来的进步与变化，体现了中国是一个自强不息，拥有巨大潜力的国家。</p>
+	</div>
+
+	<script>
+
+		// 构造函数的过程
+		/*function Foo(name,age){
+			this.name = name;
+			this.age = age;
+			this.class = 23;
+		}
+		var f = new Foo('zhangsan',20);
+		console.log(f.class);  //23
+		console.log(f instanceof Foo); //true Foo是f的构造函数。
+		var m = new Foo('lisi',30);
+		console.log(m); //Foo {name: "lisi", age: 30, class: 23}*/	
+
+
+
+		// 判断一个变量是不是数组
+		/*var s = [1,2,3];
+		console.log( s instanceof Array);  //true  判断一个函数是否是一个变量的构造函数*/
+
+
+
+		// 5个原型规则和实例
+		/*1、任何一个引用类型都有可扩展属性。
+		var obj = {};
+		obj.a = 100;
+		var arr = [];
+		arr.a = 100;
+		function fun(){}
+		fun.a = 100;
+
+		console.log(obj.__proto__);  
+		//有值  2、隐式原型属性  所有引用类型都有隐式原型属性
+
+		console.log(arr.__proto__);	//有值	
+		console.log(fun.__proto__);	//有值
+		console.log(fun.prototype) 
+		//{constructor: ƒ}  显式原型属性  3、所有函数都有一个显式原型属性
+
+		console.log(fun.__proto__===Function.prototype) 
+		//true	4、引用类型的隐式原型=其构造函数的显式原型*/
+		
+
+		/*
+		5、当得到一个对象的某个属性时，如果这个对象本身没有这个属性，就会去他的__proto__(即它的构造函数的prototype)中去寻找。
+		function Foo(name,age){
+			this.name = name;  //this指向f
+		}
+		Foo.prototype.alertName = function(){
+			alert(this.name)	//this指向f
+		}
+
+		var f = new Foo('zhangsan');
+		f.printName = function(){
+			console.log(this.name);	//this指向f
+		}
+		 f.printName(); //zhangsan
+		 f.alertName();	//zhangsan	
+		 console.log(f.name) //zhangsan
+
+		 var item;
+		 for(item in f){
+		 	console.log(item)  //三个 name  alertName  printName
+		 }
+		  for(item in f){
+		 	if(f.hasOwnProperty(item)){	
+		 	//屏蔽原型属性，高级浏览器有这个判断，但最好加上保证程序的健壮性。  
+		 		console.log(item)	
+		 		//两个 name printName
+		 	}
+		 }
+		*/
+
+
+		// 隐式原型的隐式原型
+		/*
+		function Foo(name,age){
+			this.name = name; 
+		}
+		Foo.prototype.alertName = function(){
+			alert(this.name)
+		}
+
+		var f = new Foo('zhangsan');
+		f.printName = function(){
+			console.log(this.name);	
+		}
+		 console.log(f.toString())
+		 //在f的隐式原型里找（即Foo.prototype），没有。继续到Foo.prototype的隐式原型里找（即Object.prototype）,找到了。   Object.prototype的隐式原型就为null了，为了避免继续循环下去。
+		*/
+
+
+
+		// instanceof的执行原理   利用如上的代码
+		/*
+		console.log(f instanceof Foo);  
+		//true  通过比较f.__proto__与Foo.prototype是否相等判断；
+
+		console.log(f instanceof Object)  
+		//true 如果第一层没有，就继续沿着__proto__往上找，最后是Foo.__proto__与Object.prototype相等。
+		*/
+
+
+
+		//问题：写一个原型链继承的例子
+		/*举例用
+		function Animal(){
+			this.eat = function(){
+				console.log('animal eat');
+			}
+		}
+		function Dog(){
+			this.bark = function(){
+				console.log('animal bark');
+			}
+		}
+
+		Dog.prototype = new Animal()
+		var hashiqi = new Dog();
+		console.log(hashiqi.eat());
+		console.log(hashiqi.bark());
+		*/
+		// 面试用
+		/*
+		function Elem(id){
+			this.elem = document.getElementById(id);
+		}
+		Elem.prototype.html = function(val){
+			var elem = this.elem;
+			if(val){
+				elem.innerHTML = val;
+				//返回对象，使其可以链式操作；
+				return this
+			}else{
+				return elem.innerHTML;
+			}
+		}
+		Elem.prototype.on = function(type,fn){
+			var elem = this.elem;
+			elem.addEventListener(type,fn)
+			return this;
+		}
+
+		var div1 = new Elem('div1');
+		console.log(div1.html('这是真的吗？'))
+		//链式操作
+		div1.html('123');
+		div1.on('click',function(){
+			alert(123);
+		}).html('456').on('click',function(){
+			alert(456);
+		})
+		*/
+
+
+		//如何准确判断一个变量是数组类型
+		/*
+		arr instanceof Array;  //true
+		*/
+
+
+		//问题：zepto(或者其他框架)源码中如何使用原型链
+		/*慕课《《zepto设计和源码分析》》*/
+
+		//问题：简述new一个对象的过程
+		/*
+		首先创建一个新对象，this指向这个新对象，对this赋值，返回this。*/
+
+	</script> 
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+
+	// 变量类型
+	/*
+	console.log(typeof undefined);  //undefined
+	console.log(typeof 'abc');	//string
+	console.log(typeof 123);	//number
+	console.log(typeof true);	//boolean
+	console.log(typeof []);		//object
+	console.log(typeof {});		//object
+	console.log(typeof null);	//object
+	console.log(typeof console.log);  //function*/
+
+	// 变量计算-强制类型转换
+	/*
+	console.log(100=='100');  //true
+	console.log(0=='');  //true
+	console.log(null==undefined);  //true
+	console.log(10&&0)	//0
+
+	if('') //false
+	if(NAN) //false
+	if(0)  //false
+	if(null)  //false
+	if(false)  //false
+	if(undefined)  //false
+	*/
+
+
+	//问题：什么时候用==什么时候用===
+	/*
+	if(obj.a==null){
+		此时就相当于 obj.a===null||obj.a===undefined;
+		除此之外全部用===，此为jquery源码中推荐的写法。
+	}*/
+
+	// 页面渲染过程
+	/*1、当onload事件触发时，页面上所有的DOM，样式表，脚本，图片，flash都已加载完成了。
+	2、当DOMContetntLoaded事件触发时，仅仅是DOM加载完成，不包括样式表，图片，flash。*/
+
+	//问题：JS中有哪些内置函数--数据封装类对象
+	/*
+	Object
+	Array
+	Boolean
+	Number
+	String
+	Function
+	Date
+	RegExp
+	Error
+	*/
+
+	//问题 js按照存储方式区分变量类型
+	/*
+	值类型
+	var a=10;
+	var b=a;
+	a = 11;
+	console.log(b); //10
+
+
+	引用类型
+	var obj1 = {x:100};
+	var obj2 = obj1;
+	obj2.x = 10;
+	console.log(obj1.x);  //10
+	
+
+	function fn(){};
+	fn.age = 10;
+	var m = fn;
+	m.age = 20;
+	console.log(m);
+
+	var a = [1,2,3];
+	a.age = 10;
+	var b = a;
+	b.vce = 20;
+	console.log(b)
+
+	var a = {};
+	a.age = 10;
+	var b =a;
+	b.name = 'maomao';
+	console.log(b)*/
+
+
+
+	//问题：如何理解JSON
+	//json 只不过是一个JS对象而已
+	/*
+	var m = JSON.stringify({a:10,b:20});
+	console.log(m)	//转为json字符串 {"a":10,"b":20}
+
+	var s = JSON.parse('{"a":10,"b":20}');
+	console.log(s)	//解析json字符串 {a: 10, b: 20}
+	*/
+
+
+
+
+
+</script>
+</body>
+</html>
