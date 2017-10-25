@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+</head>
+<body>
+	<button id="btn">btn</button>
+	<script src="jquery-3.2.1.js"></script>
+	<script>
+		// 异步使用场景
+		/*1、定时任务：setTimeout()，setInterval()
+		console.log(100);
+		setTimeout(function(){console.log(200)},1000);
+		console.log(300);
+		*/
+
+
+		// 同步
+		/*
+		console.log(100);
+		alert(200);		//一个阻塞
+		console.log(300);
+		*/
+
+		// 2、网络请求：Ajax请求，img加载等。。
+		/*
+		console.log('start');
+		$.get('xx.json',function(data){
+			console.log(data);
+		})
+		console.log('end');
+		
+
+		console.log('start');
+		var img = document.createElement('img');
+		img.onload = function(){
+			console.log('loaded');
+		}
+		img.src = "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3832037721,1041035072&fm=27&gp=0.jpg";
+		console.log('end')
+		*/
+
+		// 3、事件绑定
+		/*
+		console.log('start');
+		var btn = document.getElementById('btn');
+		btn.addEventListener('click',function(){
+			console.log('ok');
+		})
+		console.log('end');
+		*/
+
+
+		 // 单线程的含义
+		 /*
+		 console.log(100)		 //执行第一行
+		 setTimeout(function(){console.log(200)}); //执行settimeout后传入的函数会被暂存起来，不会立即执行。单线程不能同时干两件事。
+		 console.log(300)	//执行第三行
+		 //所有程序执行完，处于空闲状态后查看有没有暂存起来的程序要执行，有的话就执行。
+		 */
+
+		 //问题：同步和异步的区别
+		 // 同步会阻塞代码执行，而异步不会。
+		 //总结：js是单线程语言，只能一次一件事，当碰到一些能造成阻塞的函数时比如（setTimeout、Ajax请求），就会先把他们发到另一个队列里，等主队列执行完成后在将其调回来执行这几个函数。
+		 
+	</script>
+</body>
+</html>
