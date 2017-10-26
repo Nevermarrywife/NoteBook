@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 事件绑定<div>
+		<p id="p1">这是一场婀娜多姿的雨</p>
+		<button id="btn">没有什么比这更美了</button>
+	</div> -->
+
+
+	 <div id="main">
+		<div>
+			<p id="star">激活</p>
+			<p>取消</p>
+			<p>取消</p>
+			<p>取消</p>
+		</div>
+		<div>
+			<p>取消</p>
+			<p>取消</p>
+			<p>取消</p>
+		</div>
+	</div> 
+	<script>
+		//事件绑定的几种方法
+		/*
+		var p1 = document.getElementById('p1');
+		p1.addEventListener('click',function(event){
+			alert('半个学校都淹了')
+		})
+
+		function bindEvent(elem,type,fn){
+			elem.addEventListener(type,fn)
+		}
+
+		var btn = document.getElementById('btn');
+		bindEvent(btn,'click',function(e){
+			e.preventDefault();	//阻止默认事件发生
+			alert('还有一半快淹了');
+		})
+		*/
+
+
+		// 冒泡
+		/*
+		var star = document.getElementById('star');
+		var main = document.getElementById('main');
+		function bindEvent(elem,type,fn){
+			elem.addEventListener(type,fn)
+		};
+		bindEvent(star,'click',function(e){
+			e.stopPropagation();	//阻止冒泡
+			alert('激活');
+		});
+		bindEvent(main,'click',function(){
+			alert('取消');
+		})
+		*/
+
+
+		// 代理
+		/*
+		var main = document.getElementById('main');
+		main.addEventListener('click',function(e){
+			var target = e.target;		//确认事件是从哪个标签出发的。
+			if(target.nodeName === 'P'){	//大写
+				alert(target.innerHTML);
+			}
+		})
+		*/
+
+
+
+		// 问题：通用绑定事件函数
+		/*
+		function bindEvent(elem,type,selector,fn){
+			if(fn == null){		//交换两个的位置
+				fn = selector;
+				selector = null;
+			}
+			elem.addEventListener(type,function(e){
+				var target;
+				if(selector){
+					target = e.target;
+					if(target.matches(selector)){
+						fn.call(target,e)	//暂先认为将fn里的this指向target，传入参数3
+					}
+				}else{
+					fn(e)
+				}
+			})
+		}
+
+		var main = document.getElementById('main');
+		bindEvent(main,'click','p',function(){	//使用代理
+			console.log(this.innerHTML)
+		})
+
+		var main = document.getElementById('main');
+		bindEvent(main,'click',function(e){		//不使用代理
+			console.log(this.innerHTML)
+		})
+		*/
+
+		//问题：描述事件冒泡流程
+		// 沿着DOM树向上冒泡，一层一层触发事件。用stopPropagation()阻止冒泡
+
+
+		//问题：代理
+		// 知道如何使用代理
+		//两个优点，代码简洁，对浏览器的压力更小，性能更高。
+	</script>
+</body>
+</html>
