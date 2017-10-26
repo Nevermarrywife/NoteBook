@@ -6,6 +6,7 @@
 </head>
 <body>
 	<script>
+		/*
 		console.log(Date.now())  //获取当前时间毫秒数
 		var dt = new Date();
 		console.log(dt.getTime());	//毫秒数
@@ -15,7 +16,59 @@
 		console.log(dt.getHours());//小时（0-23）
 		console.log(dt.getMinutes());//分钟（0-59）
 		console.log(dt.getSeconds());//秒（0-59）
-		console.log(dt
+		*/
+
+		//问题：获取2017-10-26格式的日期
+		/*
+		var dt = new Date();
+		var year = dt.getFullYear();
+		var month = dt.getMonth()+1;
+		var date = dt.getDate();
+		if(month<10){
+			month =  '0'+month;
+		}
+		if(date<10){
+			//强制类型转换
+			date = '0'+date;
+		}
+		console.log(year+'-'+month+'-'+date);
+		*/
+		
+
+		//问题：获取随机数，要求长度是一致的字符串格式。
+		/*
+		var random = Math.random();
+		random = random+'0000000000';
+		var s = random.slice(0,10);		//截取字符串，从零开始包括零，到十结束不包括十。
+		console.log(s)
+		*/
+
+		//问题：写一个能遍历数组和对象的通用forEach函数
+		/**********
+		function forEach(obj,fn){
+			var key;
+			if(obj instanceof Array){
+				obj.forEach(function(item,index){
+					fn(item,index);
+				})
+			}else{
+				for( key in obj){
+					fn(key,obj[key]);
+				}
+			}
+		}
+
+
+		var arr = {
+			x:1,
+			y:3,
+			z:23
+		};
+		var arr = [1,2,5,4,6]
+		forEach(arr,function(item,index){
+			console.log(index,item);
+		})
+		*/
 	</script>
 </body>
 </html>
