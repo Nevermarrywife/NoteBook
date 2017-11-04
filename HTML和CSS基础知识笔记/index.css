@@ -1,0 +1,103 @@
+/*css注释格式*/
+
+/*p{
+	标签选择器
+}*/
+
+/*.class{
+	类选择器
+}*/
+
+
+/*#id{
+	id选择器
+}*/
+
+
+/*ul>li{
+	子选择器,第一代
+}*/
+
+
+/*first span{
+	后代选择器,后代所有
+}*/
+
+
+/**{
+	通用选择器,匹配所有标签
+}
+*/
+
+
+/*a:hover{
+	伪类选择器,给标签的某种状态设置样式,和a兼容最好
+}*/
+
+/*h1,h2,.main{
+	分组选择符
+}*/
+
+
+/*p .main{
+	可以实现
+}
+*/
+
+
+/*span{
+	font-family: "Microsoft Yahei";
+	字体
+}*/
+
+
+/*p{
+	font-style: italic; 斜体
+}
+p{
+	text-decoration:underline; 下划线
+}
+p{
+	text-decoration:line-through; 删除线
+}
+p{
+	text-indent:2em;  缩进两个字的大小
+}
+p{
+	letter-spacing:10px;  汉字体间隔
+	word-spacing:10px;  英文单词间隔
+}*/
+
+
+/*div{
+	为块级元素里的图片和文字设置居中
+	text-align:center;
+}*/
+
+
+/*a{
+	display: block;
+	将元素设置为块级元素
+}*/
+
+/*a{
+	display: inline;
+	将元素设置为行内元素
+}*/
+/*a{
+	display: inline-block;
+	将元素设置为内联块状元素
+}*/
+
+
+/*p{
+	border-style: solid\dotted\dashed  实线、点线、虚线
+}*/
+
+
+/*p{
+	填充
+	padding:10px 10px 10px 10px;   上右下左
+	padding:10px 10px;	上下 左右
+	padding:10px;	上下左右
+}*/
